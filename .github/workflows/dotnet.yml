@@ -7,7 +7,6 @@ on:
     branches: [ main ]
 env:
   MYGET_SOURCE: "https://nuget.larksx.com/v3/index.json" 
-  MYKEY: ${{secrets.NUGET_API_KEY}}
 jobs:
   build:
 
@@ -31,4 +30,5 @@ jobs:
         nuget-version: '5.x'
     - name: 发布生成包到github和nuget
       run: |
-        nuget push src/TestLib/Bin/Debug/*.nupkg -Source ${{ env.ARTIFACT_NAME }} -ApiKey ${{secrets.NUGET_API_KEY}} -SkipDuplicate
+        nuget push src/TestLib/Bin/Debug/*.nupkg -Source ${{ env.MYGET_SOURCE }} -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }} -NoSymbol
+         
