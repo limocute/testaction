@@ -28,7 +28,7 @@ jobs:
       uses: nuget/setup-nuget@v1
       with:        
         nuget-version: '5.x'
-    - name: 发布生成包到github和nuget
+    - name: 发布生成包到github和private nuget
       run: |
         nuget push src/TestLib/bin/Debug/*.nupkg -Source ${{ env.MYGET_SOURCE }} -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }} -NoSymbol
          
