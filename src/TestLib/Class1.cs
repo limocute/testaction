@@ -1,7 +1,7 @@
 ﻿
 namespace TestLib
 {
-    public class Class12
+    public class Class1
     {
 
     }
