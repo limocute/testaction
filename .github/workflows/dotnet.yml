@@ -7,6 +7,7 @@ on:
     branches: [ main ]
 env:
   MYGET_SOURCE: "https://nuget.larksx.com/v3/index.json" 
+  MYKEY: ${{secrets.NUGET_API_KEY}}
 jobs:
   build:
 
