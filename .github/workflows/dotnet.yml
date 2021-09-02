@@ -1,0 +1,33 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+env:
+  MYGET_SOURCE: "https://nuget.larksx.com/v3/index.json" 
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./src/
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: ./src/
+    - name: 安装nuget 
+      uses: nuget/setup-nuget@v1
+      with:        
+        nuget-version: '5.x'
+    - name: 发布生成包到github和nuget
+      run: |
+        nuget push ./bin/Release/*.nupkg -Source ${{ env.ARTIFACT_NAME }} -k ${{secrets.NUTGET_API_KEY}} -SkipDuplicate
