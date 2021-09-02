@@ -1,6 +1,8 @@
 ﻿
-namespace TestLib;
-public class Class1
+namespace TestLib
 {
+    public class Class1
+    {
 
+    }
 }
