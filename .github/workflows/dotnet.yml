@@ -20,14 +20,14 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: ./src/
+      working-directory: src/
     - name: Build
       run: dotnet build --no-restore
-      working-directory: ./src/
+      working-directory: src/
     - name: 安装nuget 
       uses: nuget/setup-nuget@v1
       with:        
         nuget-version: '5.x'
     - name: 发布生成包到github和nuget
       run: |
-        nuget push ./bin/Release/*.nupkg -Source ${{ env.ARTIFACT_NAME }} -k ${{secrets.NUTGET_API_KEY}} -SkipDuplicate
+        nuget push src/TestLib/Bin/Debug/*.nupkg -Source ${{ env.ARTIFACT_NAME }} -k ${{secrets.NUTGET_API_KEY}} -SkipDuplicate
