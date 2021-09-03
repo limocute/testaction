@@ -15,7 +15,7 @@ env:
 jobs:
   build:
 
-    runs-on: windows-latest #ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -28,8 +28,8 @@ jobs:
       with:        
         nuget-version: '5.x'
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: src/TestLib.sln
+      run: dotnet restore src/TestLib.sln
+      #working-directory: src/TestLib.sln
     
     - name: Build
       run: dotnet build --configuration Release 
