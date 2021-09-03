@@ -9,7 +9,11 @@
     "^refs/tags/v\\d+\\.\\d+\\.\\d+"
     "^refs/tags/d+\\.\\d+\\.\\d+"
     "^refs/tags/d+\\.\\d+"
-    "^refs/tags/-alpha"
+    "^refs/tags/stable$"
+    "^refs/tags/stable\\d+\\.\\d+"
+    "^refs/tags/stable\\d+\\.\\d+\\.\\d+"
+    "^refs/tags/Stable\\d+\\.\\d+"
+    "^refs/tags/Stable\\d+\\.\\d+\\.\\d+"
   ],
   "cloudBuild": {
     "buildNumber": {
