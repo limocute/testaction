@@ -39,9 +39,19 @@ jobs:
       uses: nuget/setup-nuget@v1
       with:        
         nuget-version: '5.x'
-    - name: Install .Net 6.0 Workloads
+        
+    - name: Install .Net 6.0 android Workloads
       # TODO: This is slow. Maybe we can make a docker container with this already done?
-      run: dotnet workload install android android-aot ios maccatalyst maui
+      run: dotnet workload install android
+    - name: Install .Net 6.0 android-aot Workloads
+      run: dotnet workload install android-aot
+    - name: Install .Net 6.0 ios Workloads
+      run: dotnet workload install ios
+    - name: Install .Net 6.0 maccatalyst Workloads
+      run: dotnet workload install maccatalyst
+    - name: Install .Net 6.0 maui Workloads
+      run: dotnet workload install maui
+      
     - name: Restore dependencies
       run: dotnet restore 
       working-directory: ${{env.TOPLEVEL_BUILD_DIR}}
