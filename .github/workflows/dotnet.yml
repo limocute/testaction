@@ -33,7 +33,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release --no-restore
       working-directory: src/
     
     - name: 发布生成包到github和private nuget
