@@ -12,6 +12,7 @@ on:
     - '*' 
 env:
   MYGET_SOURCE: "https://nuget.larksx.com/v3/index.json" 
+  TOPLEVEL_BUILD_DIR: "./src/"
 jobs:
   build:
 
@@ -30,6 +31,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore 
       working-directory: src/
+
     - name: Build
       run: dotnet build --configuration Release 
       working-directory: src/
