@@ -2,14 +2,14 @@ name: .NET
 
 on:
 #下面注释的是推送主分支时
-  #push:
-    #branches: [ main ]
-  #pull_request:
+  push:
+    branches: [ main ]
+  pull_request:
     #branches: [ main ]
 #下面是推送标签时
- push:
-  tags:
-    - '*' 
+ #push:
+  #tags:
+    #- '*' 
 env:
   MYGET_SOURCE: "https://nuget.larksx.com/v3/index.json" 
 jobs:
@@ -23,6 +23,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    - name: 安装nuget 
+      uses: nuget/setup-nuget@v1
+      with:        
+        nuget-version: '5.x'
     - name: Restore dependencies
       run: dotnet restore
       working-directory: src/
@@ -31,10 +35,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
       working-directory: src/
-    - name: 安装nuget 
-      uses: nuget/setup-nuget@v1
-      with:        
-        nuget-version: '5.x'
+    
     - name: 发布生成包到github和private nuget
       run: |
         nuget push src/TestLib/bin/Release/*.nupkg -Source ${{ env.MYGET_SOURCE }} -SkipDuplicate -ApiKey ${{ secrets.NUGETKEY }} -NoSymbol
