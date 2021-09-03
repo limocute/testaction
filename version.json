@@ -9,6 +9,7 @@
     "^refs/tags/v\\d+\\.\\d+\\.\\d+"
     "^refs/tags/d+\\.\\d+\\.\\d+"
     "^refs/tags/d+\\.\\d+"
+    "^refs/tags/-alpha"
   ],
   "cloudBuild": {
     "buildNumber": {
